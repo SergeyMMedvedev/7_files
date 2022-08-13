@@ -63,7 +63,7 @@ class Kitchener:
     def get_cook_book(self) -> dict:
         """Заполняет и возвращает книгу рецептов на основе файла с рецептами"""
         with open(self.path, encoding='utf-8') as recipes:
-            dish_name = recipes.readline().strip('\n')
+            dish_name = self._get_next_dish_name(recipes)
             while dish_name:
                 ingredients_amount = self._get_ingredients_amount(recipes, dish_name)
                 ingredients = self._get_ingredients(recipes, ingredients_amount, dish_name)
